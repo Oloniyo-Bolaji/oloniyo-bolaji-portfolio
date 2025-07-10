@@ -39,28 +39,28 @@ const Contact = () => {
       </h1>
       <div
         style={{ margin: "10px 0" }}
-        className="flex justify-center items-center "
+        className="sm:flex sm:justify-center sm:items-center p-[20px]"
       >
-        <form className="flex flex-col gap-[10px]" onSubmit={handleSubmit}>
+        <form className="flex flex-col gap-[10px] width-full" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Name"
             value={guest.name}
             onChange={(e) => setGuest({ ...guest, name: e.target.value })}
-            className="bg-[#d1dfe8] w-[400px] h-[30px] placeholder:text-[13px] text-[13px] p-[5px] outline-0"
+            className="bg-[#d1dfe8] sm:w-[400px] h-[30px] placeholder:text-[13px] text-[13px] p-[5px] outline-0"
           />
           <input
             type="text"
             placeholder="Email"
             value={guest.email}
             onChange={(e) => setGuest({ ...guest, email: e.target.value })}
-            className="bg-[#d1dfe8] w-[400px] h-[30px] placeholder:text-[13px] text-[13px] p-[5px] outline-0"
+            className="bg-[#d1dfe8] sm:w-[400px] h-[30px] placeholder:text-[13px] text-[13px] p-[5px] outline-0"
           />
           <textarea
             value={guest.message}
             onChange={(e) => setGuest({ ...guest, message: e.target.value })}
             placeholder="Message"
-            className="bg-[#d1dfe8] w-[400px] h-[100px] placeholder:text-[13px] text-[13px] p-[5px] outline-0"
+            className="bg-[#d1dfe8] sm:w-[400px] h-[100px] placeholder:text-[13px] text-[13px] p-[5px] outline-0"
           ></textarea>
           <button className="bg-[#0c7986] rounded-[5px] mx-auto p-[5px] text-[12px] text-btn outline-0">
             Send Message

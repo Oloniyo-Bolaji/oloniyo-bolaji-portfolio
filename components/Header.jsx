@@ -53,7 +53,7 @@ const Header = ({ header }) => {
   }, []);
 
   return (
-    <div className="pt-[70px] z-[1] sm:h-[500px] flex sm:items-center sm:justify-evenly flex-col sm:flex-row text-[white] px-[20px] sm:px-[0px] py-[50px]">
+    <div className="pt-[70px] z-[1] sm:h-[500px] flex sm:items-center sm:justify-evenly gap-[10px] flex-col sm:flex-row text-[white] px-[20px] sm:px-[0px] py-[50px]">
       <div className="max-w-[500px] w-full flex flex-col gap-[10px]">
         <h1 className="w-fit text-[12px] p-[5px] rounded-[10px] bg-[#d1dfe830] text-[#0c7986] border-solid border-[1px] border-[#0c7986]">
           {header[0].greeting}
@@ -65,7 +65,7 @@ const Header = ({ header }) => {
             cursorBlinking
           />
         </h1>
-        <div className="intro text-text text-[15px]">
+        <div className="intro text-text sm:text-[15px] text-[13px]">
           <PortableText value={header[0].introduction} />
         </div>
         <div className="flex gap-[10px]">

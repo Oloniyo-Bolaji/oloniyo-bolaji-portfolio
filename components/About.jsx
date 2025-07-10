@@ -33,7 +33,7 @@ const About = ({ about }) => {
       <h1 className="title w-fit mx-auto font-bold text-desc my-[10px] py-[5px] text-[20px] uppercase border-solid border-b-[1px] border-b-desc">
         {about[0].title}
       </h1>
-      <div className="about text-text sm:text-justify text-center text-[15px] py-[10px] leading-[25px]">
+      <div className="about text-text sm:text-justify text-center sm:text-[15px] text-[13px] py-[10px] leading-[25px]">
         <PortableText value={about[0].about} />
       </div>
     </div>
