@@ -1,0 +1,70 @@
+"use client";
+
+import React, { useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import * as simpleIcons from "simple-icons";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const Skills = ({ techStacks }) => {
+  const getSimpleIcon = (slug) => {
+    const iconKey = "si" + slug.charAt(0).toUpperCase() + slug.slice(1);
+    return simpleIcons[iconKey];
+  };
+
+  useEffect(() => {
+    const animation = gsap.from(".skills", {
+      scrollTrigger: {
+        trigger: ".skills",
+        start: "top 90%",
+      },
+      y: 50,
+      opacity: 0,
+      stagger: 0.1,
+      duration: 1,
+      ease: "power2.out",
+    });
+
+    return () => {
+      animation.kill();
+    };
+  }, []);
+
+  return (
+    <div className="skills text-[white] my-[30px] px-[20px]">
+      <h1 className="title font-bold w-fit mx-auto text-desc my-[10px] py-[5px] text-[20px] uppercase border-solid border-b-[1px] border-b-desc">
+        Tools
+      </h1>
+      <div className="grid grid-cols-3 sm:grid-cols-6 gap-[20px] text-[white] w-full py-[10px]">
+        {techStacks.map((techStack) => {
+          const icon = getSimpleIcon(techStack.slug.current);
+
+          return (
+            <div
+              key={techStack._id}
+              className="flex items-center flex-col justify-center gap-[10px] bg-[#d1dfe850] p-[10px] rounded-[5px]"
+            >
+              {icon && (
+                <svg
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={40}
+                  height={40}
+                  fill={`#${icon.hex}`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  title={icon.title}
+                >
+                  <path d={icon.path} />
+                </svg>
+              )}
+              <span className="text-[12px] text-desc">{techStack.title}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default Skills;

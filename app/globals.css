@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fafafa;
+  --text: black;
+  --desc: black;
+  --btn: white;
+  --text-gradient: linear-gradient(to right, #0c7986, #d1dfe8, #616060);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-text: var(--text);
+  --color-desc: var(--desc);
+  --color-btn: var(--btn);
+  --color-title: var(--text-gradient);
+}
+.dark {
+  --background: #000000;
+  --text: #616080;
+  --desc: white;
+  --btn: bblack;
+  --text-gradient: linear-gradient(to right, #0c7986, #d1dfe8, #616060);
+}
