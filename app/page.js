@@ -44,6 +44,10 @@ const getAbout = `*[_type == "about"]{
     title, 
     about,
     }`;
+const getResume = `*[_type == "resume"][0]{
+  title,
+  "fileUrl": file.asset->url
+}`;
 
 const options = { next: { revalidate: 30 } };
 
@@ -52,6 +56,7 @@ const Home = async () => {
   const techStacks = await client.fetch(getTechStack, {}, options);
   const header = await client.fetch(getHeader, {}, options);
   const about = await client.fetch(getAbout, {}, options);
+  const resume = await client.fetch(getResume, {}, options);
   return (
     <div>
       <Header header={header} />

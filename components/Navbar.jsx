@@ -5,14 +5,23 @@ import Link from "next/link";
 import { Great_Vibes } from "next/font/google";
 import { FaMoon } from "react-icons/fa";
 import { IoSunny } from "react-icons/io5";
+import { client } from "@/src/sanity/client";
 
 const greatVibes = Great_Vibes({
   weight: "400",
   subsets: ["latin"],
 });
 
-const Navbar = () => {
+const getResume = `*[_type == "resume"][0]{
+  title,
+  "fileUrl": file.asset->url
+}`;
+
+const options = { next: { revalidate: 30 } };
+
+const Navbar = async () => {
   const [isDark, setIsDark] = useState(false);
+  const resume = await client.fetch(getResume, {}, options);
 
   return (
     <nav className="h-[70px] w-full flex justify-between items-center sm:px-[50px] px-[30px] z-[2]">
@@ -26,8 +35,10 @@ const Navbar = () => {
       </div>
       <div className="flex items-center gap-[10px]">
         <a
-          href=""
+          href={resume.fileUrl}
           download="Oloniyo_Bolaji.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-[#0c7986] p-[5px] border-solid border-[2px] border-[#0c7986] rounded-[5px] text-[13px]"
         >
           Resume
@@ -40,7 +51,7 @@ const Navbar = () => {
           }}
         >
           {isDark ? (
-            <span className="text-[orange]"> 
+            <span className="text-[orange]">
               <IoSunny />
             </span>
           ) : (
