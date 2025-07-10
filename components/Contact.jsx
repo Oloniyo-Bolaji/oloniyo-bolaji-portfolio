@@ -9,9 +9,11 @@ const Contact = () => {
     name: "",
     message: "",
   });
+const [sending, setSending] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSending(true)
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -24,6 +26,7 @@ const Contact = () => {
       if (result.success) {
         toast.success("Message sent!");
         setGuest({ name: "", email: "", message: "" });
+        setSending(false)
       } else {
         toast.error("Failed to send: " + result.message);
       }
@@ -63,7 +66,7 @@ const Contact = () => {
             className="bg-[#d1dfe8] sm:w-[400px] h-[100px] placeholder:text-[13px] text-[13px] p-[5px] outline-0"
           ></textarea>
           <button className="bg-[#0c7986] rounded-[5px] mx-auto p-[5px] text-[12px] text-btn outline-0">
-            Send Message
+            {sending ? "Sending..." : "Send Message"}
           </button>
         </form>
       </div>

@@ -6,48 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { client } from "@/src/sanity/client";
 import Contact from "@/components/Contact";
+import {getResume, getTechStack, getAbout, getHeader, getProjects} from "@/src/sanity/queries"
 
-const getProjects = `*[_type == "projects"]{
-    _id,
-    "image": image.asset -> url,
-    "slug": slug.current,
-    title,
-    link, 
-    description,
-    livelink,
-    githublink,
-    techStack[]->{
-     title,      
-     _id
-},
-   _publishedAt
-    }`;
-const getTechStack = `*[_type == "technology"]{
-    _id,
-    slug,
-    title,
-    }`;
-const getHeader = `*[_type == "header"]{
-    _id,
-    "slug": slug.current,
-    greeting,
-    name,
-    introduction, 
-    instagram,
-    linkedIn,
-    github,
-    "image": image.asset -> url,
-    }`;
-const getAbout = `*[_type == "about"]{
-    _id,
-    "slug": slug.current,
-    title, 
-    about,
-    }`;
-const getResume = `*[_type == "resume"][0]{
-  title,
-  "fileUrl": file.asset->url
-}`;
 
 const options = { next: { revalidate: 30 } };
 

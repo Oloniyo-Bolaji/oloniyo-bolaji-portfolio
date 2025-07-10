@@ -103,7 +103,9 @@ const Header = ({ header }) => {
             <Image
               src={header[0].image}
               alt="Profile image"
+              priority
               fill
+              sizes="300px"
               className="object-cover"
             />
           </div>
