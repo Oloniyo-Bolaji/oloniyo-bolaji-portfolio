@@ -35,7 +35,7 @@ export default {
       title: "LiveLink",
       type: "url",
     },
-      {
+    {
       name: "githublink",
       title: "GithubLink",
       type: "url",
@@ -45,6 +45,19 @@ export default {
       title: "Tech Stack",
       type: "array",
       of: [{ type: "reference", to: { type: "technology" } }],
+    },
+    {
+      name: "order",
+      title: "Order",
+      type: "number",
+      description:
+        "Set a number to control project display order (lower = higher priority)",
+    },
+    {
+      name: "featured",
+      title: "Featured Project",
+      type: "boolean",
+      initialValue: false,
     },
     {
       name: "publishedAt",

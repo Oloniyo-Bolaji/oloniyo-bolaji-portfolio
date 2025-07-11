@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { toast } from 'react-toastify'
+import { toast } from "react-toastify";
+import { IoIosSend } from "react-icons/io";
 
 const Contact = () => {
   const [guest, setGuest] = useState({
@@ -9,11 +10,18 @@ const Contact = () => {
     name: "",
     message: "",
   });
-const [sending, setSending] = useState(false)
+  const [sending, setSending] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSending(true)
+
+    if (!guest.name || !guest.email || !guest.message) {
+      toast.error("Please fill out all fields");
+      return;
+    }
+
+    setSending(true);
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -26,25 +34,29 @@ const [sending, setSending] = useState(false)
       if (result.success) {
         toast.success("Message sent!");
         setGuest({ name: "", email: "", message: "" });
-        setSending(false)
       } else {
         toast.error("Failed to send: " + result.message);
       }
     } catch (error) {
       toast.error("Something went wrong: " + error.message);
+    } finally {
+      setSending(false);
     }
   };
 
   return (
     <div>
-      <h1 className=" font-bold title w-fit mx-auto text-desc my-[10px] py-[5px] text-[20px] uppercase border-solid border-b-[1px] border-b-desc">
+      <h1 className="text-shadow-[2px_2px_2px_#0c7986] font-bold title w-fit mx-auto text-desc my-[10px] py-[5px] text-[20px] uppercase border-solid border-b-[1px] border-b-desc">
         Contact Me
       </h1>
       <div
         style={{ margin: "10px 0" }}
         className="sm:flex sm:justify-center sm:items-center p-[20px]"
       >
-        <form className="flex flex-col gap-[10px] width-full" onSubmit={handleSubmit}>
+        <form
+          className="flex flex-col gap-[10px] width-full"
+          onSubmit={handleSubmit}
+        >
           <input
             type="text"
             placeholder="Name"
@@ -65,8 +77,17 @@ const [sending, setSending] = useState(false)
             placeholder="Message"
             className="bg-[#d1dfe8] sm:w-[400px] h-[100px] placeholder:text-[13px] text-[13px] p-[5px] outline-0"
           ></textarea>
-          <button className="bg-[#0c7986] rounded-[5px] mx-auto p-[5px] text-[12px] text-btn outline-0">
-            {sending ? "Sending..." : "Send Message"}
+          <button className="bg-[#0c7986] hover:bg-[white] hover:text-[#0c7986] border-solid border-[1px] border-[#0c7986] rounded-[5px] mx-auto w-[70px] flex items-center justify-center p-[5px] text-[20px] text-btn outline-0">
+            {sending ? (
+              <span
+                className="size-5 animate-spin text-[#0c7986] hover:bg-[#0c7986] bg-[white]"
+                viewBox="0 0 24 24"
+              ></span>
+            ) : (
+              <span>
+                <IoIosSend />
+              </span>
+            )}
           </button>
         </form>
       </div>

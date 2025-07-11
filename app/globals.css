@@ -22,3 +22,15 @@
   --btn: bblack;
   --text-gradient: linear-gradient(to right, #0c7986, #d1dfe8, #616060);
 }
+
+@theme {
+  --animate-dance: dance 0.5s ease-in-out infinite;
+  @keyframes dance {
+    0%, 100%: {
+      transform: rotate(-10deg);
+    }
+    50%: {
+      transform: rotate(10deg);
+    }
+  }
+}

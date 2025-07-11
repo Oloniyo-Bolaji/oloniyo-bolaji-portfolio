@@ -33,7 +33,7 @@ const Skills = ({ techStacks }) => {
 
   return (
     <div className="skills text-[white] my-[30px] px-[20px]">
-      <h1 className="title font-bold w-fit mx-auto text-desc my-[10px] py-[5px] text-[20px] uppercase border-solid border-b-[1px] border-b-desc">
+      <h1 className="title text-shadow-[2px_2px_2px_#0c7986] font-bold w-fit mx-auto text-desc my-[10px] py-[5px] text-[20px] uppercase border-solid border-b-[1px] border-b-desc">
         Tools
       </h1>
       <div className="grid grid-cols-3 sm:grid-cols-6 gap-[20px] text-[white] w-full py-[10px]">

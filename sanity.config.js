@@ -2,7 +2,6 @@ import {defineConfig} from 'sanity'
 import {structureTool} from "sanity/structure"
 import schemas from './src/sanity/schema';
 
-
 const config = defineConfig({
   projectId: 'sjwx5cw6',
   dataset: 'production',

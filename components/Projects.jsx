@@ -42,7 +42,7 @@ const Projects = ({ projects }) => {
 
   return (
     <div className="p-4 px-[20px]">
-      <h1 className="title font-bold w-fit mx-auto text-desc my-[10px] py-[5px] text-[20px] uppercase border-solid border-b-[1px] border-b-desc">
+      <h1 className="title text-shadow-[2px_2px_2px_#0c7986] font-bold w-fit mx-auto text-desc my-[10px] py-[5px] text-[20px] uppercase border-solid border-b-[1px] border-b-desc">
         Projects
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-[50px] px-[30px]">
@@ -68,7 +68,7 @@ const Projects = ({ projects }) => {
                 href={project.livelink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-[5px] text-[12px] text-[#0c7986] border-solid border-[1px] border-[#0c7986]"
+                className="p-[5px] text-[12px] rounded-[5px] text-[#0c7986] border-solid border-[1px] border-[#0c7986]"
               >
                 Live View
               </a>
@@ -77,7 +77,7 @@ const Projects = ({ projects }) => {
                 href={project.githublink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-[5px] text-[12px] text-[#0c7986] border-solid border-[1px] border-[#0c7986]"
+                className="p-[5px] text-[12px] rounded-[5px] text-[#0c7986] border-solid border-[1px] border-[#0c7986]"
               >
                 Github
               </a>

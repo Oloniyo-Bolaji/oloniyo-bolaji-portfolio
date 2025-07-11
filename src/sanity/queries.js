@@ -1,9 +1,8 @@
-export const getProjects = `*[_type == "projects"]{
+export const getProjects = `*[_type == "projects" && featured == true] | order(order asc) {
     _id,
     "image": image.asset -> url,
     "slug": slug.current,
     title,
-    link, 
     description,
     livelink,
     githublink,
@@ -11,7 +10,7 @@ export const getProjects = `*[_type == "projects"]{
      title,      
      _id
 },
-   _publishedAt
+   publishedAt
     }`;
 export const getTechStack = `*[_type == "technology"]{
     _id,
