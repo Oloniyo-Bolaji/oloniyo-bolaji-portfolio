@@ -6,8 +6,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { client } from "@/src/sanity/client";
 import Contact from "@/components/Contact";
-import {getResume, getTechStack, getAbout, getHeader, getProjects} from "@/src/sanity/queries"
-
+import {
+  getResume,
+  getTechStack,
+  getAbout,
+  getHeader,
+  getProjects,
+} from "@/src/sanity/queries";
+import ParticlesBgComponent from "@/components/ParticlesWrapper";
 
 const options = { next: { revalidate: 30 } };
 
@@ -18,12 +24,15 @@ const Home = async () => {
   const about = await client.fetch(getAbout, {}, options);
   const resume = await client.fetch(getResume, {}, options);
   return (
-    <div>
-      <Header header={header} />
-      <About about={about} />
-      <Skills techStacks={techStacks} />
-      <Projects projects={projects} />
-      <Contact />
+    <div className="relative">
+      <ParticlesBgComponent />
+      <div className="relative z-10">
+        <Header header={header} />
+        <About about={about} />
+        <Skills techStacks={techStacks} />
+        <Projects projects={projects} />
+        <Contact />
+      </div>
     </div>
   );
 };
