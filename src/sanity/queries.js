@@ -38,3 +38,21 @@ export const getResume = `*[_type == "resume"][0]{
   title,
   "fileUrl": file.asset->url
 }`;
+export const getArticles = `*[_type == "articles"] | order(publishedAt desc){
+  _id,
+  title,
+  slug,
+  publishedAt,
+  coverImage,
+  content
+}`;
+export const getArticle = `
+  *[_type == "blog" && slug.current == $slug][0]{
+    _id,
+    title,
+    slug,
+    publishedAt,
+    coverImage,
+    content
+  }
+`;

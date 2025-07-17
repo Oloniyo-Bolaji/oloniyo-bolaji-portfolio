@@ -6,6 +6,11 @@
   --desc: black;
   --btn: white;
   --text-gradient: linear-gradient(to right, #0c7986, #d1dfe8, #616060);
+  --glass-bg: rgba(255, 255, 255, 0.2);
+  --glass-radius: 16px;
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  --glass-blur: blur(5px);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 @theme {
@@ -14,13 +19,23 @@
   --color-desc: var(--desc);
   --color-btn: var(--btn);
   --color-title: var(--text-gradient);
+  --glass-bg: var(--glass-bg);
+  --glass-radius: var(--glass-radius);
+  --glass-shadow: var(--glass-shadow);
+  --glass-blur: var(--glass-blur);
+  --glass-border: var(--glass-border);
 }
 .dark {
   --background: #000000;
   --text: #616080;
   --desc: white;
-  --btn: bblack;
+  --btn: black;
   --text-gradient: linear-gradient(to right, #0c7986, #d1dfe8, #616060);
+  --glass-bg: rgba(105, 90, 90, 0.2);
+  --glass-radius: 1rem;
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  --glass-blur: blur(4px);
+  --glass-border: 1px solid rgba(105, 90, 90, 0.3);
 }
 
 @theme {
