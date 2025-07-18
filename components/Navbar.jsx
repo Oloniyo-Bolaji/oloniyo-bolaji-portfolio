@@ -48,9 +48,9 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="flex items-center gap-[10px]">
-        <Link href="/blog" className="text-[13px] text-title">
+        {/*<Link href="/blog" className="text-[13px] text-title">
           Blog
-        </Link>
+        </Link>*/}
         {resume?.fileUrl && (
           <a
             href={resume.fileUrl}

@@ -3,6 +3,11 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { IoIosSend } from "react-icons/io";
+import gsap from "gsap";
+import { MdKeyboardDoubleArrowUp } from "react-icons/md";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const Contact = () => {
   const [guest, setGuest] = useState({
@@ -93,8 +98,19 @@ const Contact = () => {
       </div>
       <div
         style={{ margin: "10px 0" }}
-        className="border-t-[1px] border-solid border-t-desc py-[10px] text-desc text-center text-[12px]"
+        className="flex flex-col justify-center items-center border-t-[1px] border-solid border-t-desc py-[10px] text-desc text-center text-[12px]"
       >
+        <button
+          onClick={() => {
+            gsap.to(window, { duration: 1, scrollTo: 0 });
+          }}
+          className="flex flex-col items-center"
+        >
+          <span className="text-[24px] animate-bounce">
+            <MdKeyboardDoubleArrowUp />
+          </span>
+          <span>Back to Top</span>
+        </button>
         <p>&copy; 2025 BeejayCodes. All rights reserved</p>
       </div>
     </div>
