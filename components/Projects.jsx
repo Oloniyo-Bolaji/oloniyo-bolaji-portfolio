@@ -44,7 +44,7 @@ const Projects = ({ projects }) => {
       <h1 className="title text-shadow-[2px_2px_2px_#0c7986] font-bold w-fit mx-auto text-desc my-[10px] py-[5px] text-[20px] uppercase border-solid border-b-[1px] border-b-desc">
         Projects
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-[50px] px-[30px]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-[50px] sm:px-[30px] px-[10px]">
         {projects.map((project, index) => (
           <div
             key={project._id}

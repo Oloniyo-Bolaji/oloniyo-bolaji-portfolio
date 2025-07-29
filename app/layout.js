@@ -17,10 +17,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${merriweather.className} bg-background`}>
+      <body className={`${merriweather.className} `}>
         <Navbar />
         {children}
-        <ToastContainer autoClose={2000} position = 'top-left'/>
+        <ToastContainer autoClose={2000} position="top-left" />
       </body>
     </html>
   );
