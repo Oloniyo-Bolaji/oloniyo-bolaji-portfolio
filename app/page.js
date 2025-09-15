@@ -1,36 +1,25 @@
 import About from "@/components/About";
-import Header from "@/components/Header";
+import Hero from "@/components/Hero";
 import Skills from "@/components/Skills";
-import Projects from "@/components/Projects";
-import Image from "next/image";
-import Link from "next/link";
 import { client } from "@/src/sanity/client";
 import Contact from "@/components/Contact";
-import {
-  getResume,
-  getTechStack,
-  getAbout,
-  getHeader,
-  getProjects,
-} from "@/src/sanity/queries";
-import ParticlesBgComponent from "@/components/ParticlesWrapper";
+import { getTechStack, getProjects } from "@/src/sanity/queries";
+import ParticlesBgComponent from "@/dynamic-components/ParticlesWrapper";
+import ProjectsWrapper from "@/dynamic-components/ProjectsWrapper";
 
 const options = { next: { revalidate: 30 } };
 
 const Home = async () => {
   const projects = await client.fetch(getProjects, {}, options);
   const techStacks = await client.fetch(getTechStack, {}, options);
-  const header = await client.fetch(getHeader, {}, options);
-  const about = await client.fetch(getAbout, {}, options);
-  const resume = await client.fetch(getResume, {}, options);
   return (
     <div className="relative">
       <ParticlesBgComponent />
       <div className="relative z-10">
-        <Header header={header} />
-        <About about={about} />
+        <Hero />
+        <About />
         <Skills techStacks={techStacks} />
-        <Projects projects={projects} />
+        <ProjectsWrapper projects={projects} />
         <Contact />
       </div>
     </div>

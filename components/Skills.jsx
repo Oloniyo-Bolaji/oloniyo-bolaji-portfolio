@@ -1,78 +1,56 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import * as simpleIcons from "simple-icons";
+import Heading from "./Heading";
+import { getSimpleIcon } from "@/lib/getIcons";
 
 gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(useGSAP);
 
 const Skills = ({ techStacks }) => {
-  const getSimpleIcon = (slug) => {
-    const iconKey = "si" + slug.charAt(0).toUpperCase() + slug.slice(1);
-    return simpleIcons[iconKey];
-  };
-  const staggerRef = useRef();
+  const sectionRef = useRef();
 
-  useGSAP(() => {
-    const boxes = gsap.utils.toArray(staggerRef.current.children);
-
-    gsap.from(boxes, {
-      y: 100,
-      opacity: 0,
-      stagger: 0.2,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: staggerRef.current,
-        start: "top 80%",
-        toggleActions: "play none none none",
-      },
-    });
-  }, []);
-
-  useEffect(() => {
-    const animation = gsap.from(".skills", {
-      scrollTrigger: {
-        trigger: ".skills",
-        start: "top 90%",
-      },
-      y: 50,
-      opacity: 0,
-      stagger: 0.1,
-      duration: 1,
-      ease: "power2.out",
-    });
-
-    return () => {
-      animation.kill();
-    };
-  }, []);
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        ".skill-item",
+        { y: 100, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse", // smoother toggle
+          },
+        }
+      );
+    },
+    { scope: sectionRef } // cleaner than passing refs manually
+  );
 
   return (
-    <div className="skills text-[white] my-[30px] px-[20px]">
-      <h1 className="title text-shadow-[2px_2px_2px_#0c7986] font-bold w-fit mx-auto text-desc my-[10px] py-[5px] text-[20px] uppercase border-solid border-b-[1px] border-b-desc">
-        Tools
-      </h1>
-      <div
-        ref={staggerRef}
-        className="grid grid-cols-3 sm:grid-cols-6 gap-[20px] text-[white] w-full py-[10px]"
-      >
+    <section ref={sectionRef} className="my-8 px-5">
+      <Heading heading="Tools" />
+      <div className="grid grid-cols-3 sm:grid-cols-6 gap-5 w-full py-2.5">
         {techStacks.map((techStack) => {
           const icon = getSimpleIcon(techStack.slug.current);
 
           return (
             <div
               key={techStack._id}
-              className="flex items-center flex-col justify-center gap-[10px] bg-[#d1dfe850] p-[10px] rounded-[5px]"
+              className="skill-item flex items-center gap-2.5 bg-[#3B82F670] p-2.5 rounded-sm"
             >
               {icon && (
                 <svg
                   role="img"
                   viewBox="0 0 24 24"
-                  width={40}
-                  height={40}
+                  width={20}
+                  height={20}
                   fill={`#${icon.hex}`}
                   xmlns="http://www.w3.org/2000/svg"
                   title={icon.title}
@@ -80,12 +58,12 @@ const Skills = ({ techStacks }) => {
                   <path d={icon.path} />
                 </svg>
               )}
-              <span className="text-[12px] text-desc">{techStack.title}</span>
+              <span className="text-sm text-[#E6EDF3]">{techStack.title}</span>
             </div>
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };
 

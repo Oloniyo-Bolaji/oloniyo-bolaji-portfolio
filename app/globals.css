@@ -57,3 +57,10 @@
 }
 
 
+@utility icons{
+  @apply p-2.5 rounded-full bg-[#3B82F6] text-xl text-white;
+}
+
+@utility inputs{
+  @apply bg-[#E6EDF3] h-[35px] placeholder:text-sm text-sm p-2 rounded outline-none;
+}

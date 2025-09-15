@@ -7,7 +7,8 @@ export const getProjects = `*[_type == "projects" && featured == true] | order(o
     livelink,
     githublink,
     techStack[]->{
-     title,      
+     title, 
+     slug,     
      _id
 },
    publishedAt
@@ -16,23 +17,6 @@ export const getTechStack = `*[_type == "technology"]{
     _id,
     slug,
     title,
-    }`;
-export const getHeader = `*[_type == "header"]{
-    _id,
-    "slug": slug.current,
-    greeting,
-    name,
-    introduction, 
-    instagram,
-    linkedIn,
-    github,
-    "image": image.asset -> url,
-    }`;
-export const getAbout = `*[_type == "about"]{
-    _id,
-    "slug": slug.current,
-    title, 
-    about,
     }`;
 export const getResume = `*[_type == "resume"][0]{
   title,
