@@ -18,6 +18,15 @@ export const getTechStack = `*[_type == "technology"]{
     slug,
     title,
     }`;
+
+export const getExperience = `*[_type == "experience"] | order(order asc){
+    _id,
+    title,
+    slug,
+    description,
+    position,
+    duration,
+}`;
 export const getResume = `*[_type == "resume"][0]{
   title,
   "fileUrl": file.asset->url
@@ -30,6 +39,7 @@ export const getArticles = `*[_type == "articles"] | order(publishedAt desc){
   coverImage,
   content
 }`;
+
 export const getArticle = `
   *[_type == "blog" && slug.current == $slug][0]{
     _id,
