@@ -54,6 +54,7 @@ const Skills = ({ techStacks }) => {
                   fill={`#${icon.hex}`}
                   xmlns="http://www.w3.org/2000/svg"
                   title={icon.title}
+                  className="sm:block hidden"
                 >
                   <path d={icon.path} />
                 </svg>
