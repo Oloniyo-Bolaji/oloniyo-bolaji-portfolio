@@ -19,7 +19,7 @@ export const getTechStack = `*[_type == "technology"]{
     title,
     }`;
 
-export const getExperience = `*[_type == "experience"] | order(order asc){
+export const getExperience = `*[_type == "experience"] | order(order desc){
     _id,
     title,
     slug,
