@@ -1,4 +1,4 @@
-export const getProjects = `*[_type == "projects" && featured == true] | order(order asc) {
+export const getProjects = `*[_type == "projects" && featured == true] | order(order desc) {
     _id,
     "image": image.asset -> url,
     "slug": slug.current,
